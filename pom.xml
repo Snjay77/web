@@ -1,0 +1,194 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.capgroup.wcm</groupId>
+  <artifactId>root</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <name>POM - WCM</name>
+  <description>WCM bundles, templates and components used by CGC web sites</description>
+  
+	<properties>
+	    <crx.protocol>http</crx.protocol>
+        <crx.host>localhost</crx.host>
+        <crx.port>4502</crx.port>
+        <crx.username>admin</crx.username>
+        <crx.password>admin</crx.password>
+        <publish.crx.host>localhost</publish.crx.host>
+        <publish.crx.port>4503</publish.crx.port>
+        <publish.crx.username>admin</publish.crx.username>
+        <publish.crx.password>admin</publish.crx.password>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+  <modules>
+  <module>cgc-core</module>
+	<module>capital-group-ui</module>
+  	<!-- module>testing</module -->
+  </modules>
+ 
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.0</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>2.3.4</version>
+        </plugin>
+        <plugin>
+          <groupId>com.acquitygroup.adep</groupId>
+          <artifactId>adept-maven-plugin</artifactId>
+          <version>1.3</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-scr-plugin</artifactId>
+          <version>1.7.0</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.felix</groupId>
+              <artifactId>org.apache.felix.scr.annotations</artifactId>
+              <version>1.6.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.felix</groupId>
+              <artifactId>org.apache.felix.scr.generator</artifactId>
+              <version>1.1.2</version>
+            </dependency>
+            <dependency>
+              <groupId>org.slf4j</groupId>
+              <artifactId>slf4j-simple</artifactId>
+              <version>1.5.3</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+    	<profile>
+    		<id>alp</id>
+			<activation>
+				<os><family>windows</family></os>
+			</activation>
+    		<properties>
+                <adepDeploy>true</adepDeploy>
+                <prof.name>alp</prof.name>
+            </properties>    		
+    	</profile>
+    	<profile>
+    		<id>dev</id>
+			<!-- activation>
+				<os><family>unix</family></os>
+			</activation -->
+    		<properties>
+                <adepDeploy>true</adepDeploy>
+                <prof.name>dev</prof.name>
+            </properties>    		
+    	</profile>
+    	<profile><!-- release profile - don't install CQ packages -->
+    		<id>rel</id>
+			<!-- activation>
+				<os><family>windows</family></os>
+			</activation -->
+    		<properties>
+                <adepDeploy>false</adepDeploy>
+                <prof.name>rel</prof.name>
+            </properties>    		
+    	</profile>
+  </profiles>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>4.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <version>4.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.scr.annotations</artifactId>
+      <version>1.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.4</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.day.cq.wcm</groupId>
+      <artifactId>cq-wcm-taglib</artifactId>
+      <version>5.5.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Unit testing Dependencies -->
+		<!--
+    <dependency>
+		
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+		-->
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <version>3.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.twip</groupId>
+      <artifactId>twip</artifactId>
+      <version>3.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jmock</groupId>
+      <artifactId>jmock-junit4</artifactId>
+      <version>2.5.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>1.8.4</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+   <repositories>
+		<repository>
+			<id>adobe</id>
+			<name>Adobe Public Repository</name>
+			<url>https://repo.adobe.com/nexus/content/groups/public/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>adobe</id>
+			<name>Adobe Public Repository</name>
+			<url>https://repo.adobe.com/nexus/content/groups/public/</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
+    
+</project>
