@@ -1,1 +1,21 @@
 
+@media {
+	only {
+		screen {
+			and {
+				(max-width {
+					&:600px) {
+						-moz-column-count: 2;
+						.cmp-text { -webkit-column-count: 2;
+						columns: 2;
+					}
+					&:748px) {
+						-moz-column-count: 3;
+						.cmp-text { -webkit-column-count: 3;
+						columns: 3;
+					}
+				}
+			}
+		}
+	}
+}
