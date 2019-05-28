@@ -1,4 +1,37 @@
+(function () {
+    'use strict';
+	 var words = $('.columnstyle .cmp-text').html().trim().split('\n').sort();
 
+	var col =3;
+
+    if(screen.width < 468){
+        col =2;
+    }
+
+	var rows = words.length/col;
+
+	
+	
+	var content = "<table width='100%'>";
+	var j=0;
+	for(var i=0; i<rows; i++){
+		
+		content +='<tr>';
+		var k=0;
+		for(j;j<words.length;j++){
+		 if(k==col){
+		  break;
+		 }
+		  content +='<td>'+words[j] +'<td>';
+		  k++;
+		}
+		content +='</tr>';
+	}
+          
+	content+='</table>';
+   $('.columnstyle .cmp-text').html(content);
+
+}).call(this);
 @media {
 	only {
 		screen {
