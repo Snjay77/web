@@ -52,3 +52,37 @@
 		}
 	}
 }
+this would be ajax call to 
+https://bpi.briteverify.com/emails.json?address=<email-address>&apikey=<your-api-key>
+
+<email-address>- user entered email address
+<api-key>- this key is your orgaization key which needs to be get after registartion on briteverify, you have to disccus it with ur manager
+
+
+when we hit abov url, it gives json response for valid email as 
+
+{
+  "address": "johndoe@briteverify.com",
+  "account": "johndoe",
+  "domain": "briteverify.com",
+  "status": "valid",
+  "disposable": false,
+  "role_address": false,
+  "duration": 0.104516605
+}
+
+status may be valid/invalid/unknown/accept all
+
+below is the response of invalid email
+
+{
+  "address": "james@yahoo.com",
+  "account": "james",
+  "domain": "yahoo.com",
+  "status": "invalid",
+  "error_code": "email_account_invalid",
+  "error": "Email account invalid",
+  "disposable": false,
+  "role_address": false,
+  "duration": 0.141539548
+}
