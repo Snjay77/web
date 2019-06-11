@@ -86,3 +86,17 @@ below is the response of invalid email
   "role_address": false,
   "duration": 0.141539548
 }
+<link href="//cdn.briteverify.com/bforms.css" rel="stylesheet" type="text/css">
+<script src="//cdn.briteverify.com/bforms.js" type="text/javascript"></script>
+
+
+
+<form data-briteform-key="0dc23d1d-74fd-4beb-8b0d-4aa21f0b92da">
+
+
+
+Email :	<input   maxlength="254" type="email" placeholder="Enter your email address" required="" value="" >
+    <input type="hidden" id="briteform_token" name="briteform_token" value="22015cea771906179041b56ace8d8246-4a03d12c9bb272127be0aae4e4a9d841eb3ae584a428b656d73dd52cb6f73e15">
+
+
+</form>
