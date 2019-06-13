@@ -100,3 +100,11 @@ Email :	<input   maxlength="254" type="email" placeholder="Enter your email addr
 
 
 </form>
+
+<script>
+ $( window ).load(function() {
+  $('[type=email]').val('');
+  $('.btip').removeClass('btip');
+
+});
+</script>
